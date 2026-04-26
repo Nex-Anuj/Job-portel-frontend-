@@ -28,7 +28,7 @@ const AdminPost = () => {
     const headers = { Authorization: `Bearer ${token}` };
 
     try {
-      const response = await AxiosURL.post(import.meta.env.VITE_Recruiter_Jobs_Create_URL, post, { headers });
+      await AxiosURL.post(import.meta.env.VITE_Recruiter_Jobs_Create_URL, post, { headers });
       toast.success("Job Posted Successfully!");
       
       setpost({
