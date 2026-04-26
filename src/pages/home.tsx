@@ -2,7 +2,6 @@ import { Canvas } from "@react-three/fiber"
 import Scene from "../components/scene";
 import HomeSection1 from "../components/HomeSection1";
 import HomeSection2 from "../components/HomeSection2";
-import HomeSection3 from "../components/HomeSection3";
 import { Suspense} from "react";
 import { useAuth } from "../Context/contextAPI";
 import Loading3d from "../components/Loading3d";
@@ -32,7 +31,6 @@ backgroundPosition:"center"
   rfa?.Authoriza &&
 <HomeSection2/>
 }
-<HomeSection3/>
     </main>
   );
 };

@@ -69,7 +69,7 @@ const addgsap  = contextSafe(()=>{
 const tl = gsap.timeline({
 scrollTrigger:{
  trigger:"#section1",
- endTrigger:"#section3",
+ endTrigger:"#section2",
  start:"top top",
  end:"bottom",
 //  markers:true,

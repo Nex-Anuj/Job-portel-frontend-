@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const CompanyProfile = () => {
   const [comProfile, setcomProfile] = useState({
     companyId: "",
-    companyImg: null, // File ke liye null rakhein
+    companyImg: null, 
   });
 
   const handleChange = (e:any) => {
@@ -24,7 +24,9 @@ const handleSubmit = async (e:any) => {
   // 1. FormData create kiya (Correct)
   const formData = new FormData();
   formData.append("companyId", comProfile.companyId);
-  formData.append("companyImg", comProfile.companyImg);
+if (comProfile.companyImg) {
+    formData.append("companyImg", comProfile.companyImg);
+}
 
   // 2. Headers set kiye
   const token = localStorage.getItem("token");

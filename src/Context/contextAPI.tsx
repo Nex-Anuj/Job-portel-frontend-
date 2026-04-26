@@ -1,11 +1,25 @@
-import {createContext, useContext, useEffect, useState } from "react";
+import {createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import AxiosURL from "../axios/axios";
 import { toast } from "react-toastify";
 
-export const AuthContext = createContext(null);
+type AuthContextType = {
+  getAllJobsPosted: () => Promise<any>
+  adminAuthoriza: boolean
+  roleAU: boolean
+  Authoriza: boolean
+  colorFont: {
+    color: string
+    fontSize: string
+  }
+  getAllJbos: () => Promise<any>
+  handleApplay: (id: string) => Promise<void>
+}
+export const AuthContext = createContext<AuthContextType | null>(null);
+type AuthProviderProps = {
+  children: ReactNode;
+};
 
-export const AuthProvider = ({children}) =>{
-const[apply,setAppliedJobs] = useState<any[]>([])
+export const AuthProvider = ({ children }: AuthProviderProps) => {
 const[roleAU,setrole] = useState(false);
 const role = localStorage.getItem("role") || null
 const[colorFont,setcolorFont] = useState({
@@ -105,7 +119,12 @@ return(
 )    
 }
 
-export const useAuth = () =>{
- const AuthContextValue = useContext(AuthContext);
- return AuthContextValue   
-}
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  
+  if (!context) {
+    throw new Error("useAuth must be used within AuthProvider");
+  }
+
+  return context;
+};
