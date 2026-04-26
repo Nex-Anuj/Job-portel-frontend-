@@ -7,7 +7,7 @@ import { useAuth } from "../../../Context/contextAPI";
 import { useEffect } from "react";
 
 const AdminNavbar = () => {
-const{adminAuthoriza} = useAuth()  
+const auth = useAuth()
 const{pathname} = useLocation()
 const navigate = useNavigate()
 const {contextSafe} = useGSAP();
@@ -35,11 +35,11 @@ useEffect(()=>{
 window.scrollTo(0,0)
 },[pathname])
 
-useEffect(()=>{
-if (!adminAuthoriza) {
-navigate(-1)
-}
-},[adminAuthoriza])
+useEffect(() => {
+  if (!auth?.adminAuthoriza) {
+    navigate(-1)
+  }
+}, [auth])
 
 
 return (

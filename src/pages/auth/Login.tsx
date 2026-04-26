@@ -13,8 +13,6 @@ role:""
 
 const handleSubmit = async(e:any) =>{
 e.preventDefault();
-const {role,...userWithoutRole} = user
-
 
  try {
    let res;

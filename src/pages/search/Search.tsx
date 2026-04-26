@@ -6,7 +6,7 @@ import { useAuth } from "../../Context/contextAPI";
 
 const Search = () => {
  const[search,setSearch] = useState("") 
- const{handleApplay} = useAuth()
+ const handle = useAuth()
   const getAllJobs = async () => {
     const token = localStorage.getItem("token");
     const headers = { Authorization: `Bearer ${token}` };
@@ -19,7 +19,7 @@ const Search = () => {
     queryFn: getAllJobs,
   });
 
-const filteredJobs = user?.filter((curr)=>{
+const filteredJobs = user?.filter((curr:any)=>{
 return(
 curr.companyName.toLowerCase().includes(search.toLowerCase()) ||
 curr.title.toLowerCase().includes(search.toLowerCase())||
@@ -66,7 +66,7 @@ if (isLoading) return <div className="h-screen flex items-center justify-center 
 
           {/* Grid setup: Mobile: 1 col, Tablet: 2 col, Desktop: 3 col */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {filteredJobs?.map((job) => (
+            {filteredJobs?.map((job:any) => (
               <div 
                 key={job.id} 
                 className="group flex flex-col bg-white/5 border border-white/10 p-6 rounded-3xl backdrop-blur-md hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 h-full"
@@ -112,7 +112,7 @@ if (isLoading) return <div className="h-screen flex items-center justify-center 
                 </div>
 
                 <button
-                onClick={()=>handleApplay(job.id)}
+                onClick={()=>handle?.handleApplay(job.id)}
                 className="w-full mt-auto py-3 bg-[#ddd] text-[#000] cursor-pointer font-bold rounded-tl-2xl rounded-br-2xl hover:bg-[#D91099] hover:text-black transition-all active:scale-95 shadow-lg shadow-white/5">
                   Apply Now
                 </button>

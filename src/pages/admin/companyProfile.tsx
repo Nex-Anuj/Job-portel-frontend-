@@ -34,8 +34,7 @@ const handleSubmit = async (e:any) => {
   };
 
   try {
-    const response = await AxiosURL.patch(import.meta.env.VITE_Recruiter_Org_URL, formData, { headers });
-    
+  await AxiosURL.patch(import.meta.env.VITE_Recruiter_Org_URL, formData, { headers });
     toast.success("Profile updated successfully!");
 
   } catch (error:any) {
